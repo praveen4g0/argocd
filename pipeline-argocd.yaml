@@ -1,0 +1,14 @@
+apiVersion: tekton.dev/v1alpha1
+kind: Pipeline
+metadata:
+  name: argocd-pipeline
+spec:
+  tasks:
+    - name: sync-application
+      taskRef:
+        name: argocd-task-sync-and-wait
+      params:
+        - name: application-name
+          value: guestbook
+        - name: flags
+          value: --insecure
