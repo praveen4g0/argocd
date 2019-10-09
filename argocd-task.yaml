@@ -32,7 +32,7 @@ spec:
       image: argoproj/argocd:$(inputs.params.argocd-version)
       command: ["/bin/bash", "-c"]
       args:
-         - argocd app create guestbook --repo https://github.com/praveen4g0/argocd.git --path guestbook --dest-server https://kubernetes.default.svc --dest-namespace argocd-example
+         - argocd app create $(inputs.params.application-name) --repo https://github.com/praveen4g0/argocd.git --path $(inputs.params.application-name) --dest-server https://kubernetes.default.svc --dest-namespace argocd-example
     - name: sync
       image: argoproj/argocd:$(inputs.params.argocd-version)
       command: ["/bin/bash", "-c"]
